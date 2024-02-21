@@ -24,8 +24,12 @@ class Basket extends Model
         'item_id',
     ];
 
-    public function kosara()
+ /*    public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    } */
+
+    public function termekek(){
+        return $this->belongsTo(Product::class, 'item_id', 'item_id');
     }
 }

@@ -49,7 +49,11 @@ class BasketController extends Controller
     public function kosaram()
     {
         $user = Auth::user();
-        $kosar = Basket::with('kosara')->where('user_id', '=', $user->id)->get();
+
+        $kosar = Basket::with('termekek')
+            ->where('user_id', '=', $user->id)
+            ->get();
+
         return $kosar;
     }
 
@@ -70,6 +74,5 @@ class BasketController extends Controller
         DB::table('baskets')
             ->whereDate('created_at', '<', Carbon::now()->subDays(2))
             ->delete();
-
     }
 }
