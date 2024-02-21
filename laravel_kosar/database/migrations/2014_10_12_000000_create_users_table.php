@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +23,12 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        User::create([
+            'name'=> 'admin',
+            'email'=> 'admin@admin.com',
+            'password' => 'admin',
+            'balance' => 1000000000,
+        ]);
     }
 
     /**

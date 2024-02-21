@@ -9,7 +9,7 @@ class Basket extends Model
 {
     use HasFactory;
 
-    
+
     protected function setKeysForSaveQuery($query)
     {
         $query
@@ -19,4 +19,13 @@ class Basket extends Model
         return $query;
     }
 
+    protected $fillable = [
+        'user_id',
+        'item_id',
+    ];
+
+    public function kosara()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
